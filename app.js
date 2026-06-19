@@ -19,7 +19,7 @@ const modes = {
   },
   make10: {
     title: "Amigos del 10",
-    mission: "Encuentra el numero amigo que completa 10.",
+    mission: "Encuentra el número amigo que completa 10.",
     make() {
       const a = rand(0, 10);
       return { text: `${a} + ? = 10`, answer: 10 - a };
@@ -83,7 +83,6 @@ const els = {
   round: document.querySelector("#round"),
   fuel: document.querySelector("#fuel"),
   modeButtons: document.querySelectorAll(".mode-button"),
-  keypad: document.querySelector(".keypad"),
   newRound: document.querySelector("#new-round"),
   practiceList: document.querySelector("#practice-list"),
   tenWall: document.querySelector("#ten-wall"),
@@ -109,7 +108,6 @@ function newProblem(resetRound = false) {
   els.feedback.textContent = "Tu turno. Piensa rápido y dispara la respuesta.";
   els.feedback.className = "feedback";
   updateScore();
-  els.answer.focus();
 }
 
 function updateScore() {
@@ -123,7 +121,7 @@ function updateScore() {
 function checkAnswer() {
   const value = Number(els.answer.value);
   if (els.answer.value.trim() === "" || Number.isNaN(value)) {
-    els.feedback.textContent = "Pon un numero primero.";
+    els.feedback.textContent = "Pon un número primero.";
     els.feedback.className = "feedback try";
     return;
   }
@@ -197,25 +195,6 @@ els.answer.addEventListener("keydown", (event) => {
   if (event.key === "Enter") {
     checkAnswer();
   }
-});
-
-els.keypad.addEventListener("click", (event) => {
-  const button = event.target.closest("button");
-  if (!button) return;
-
-  if (button.dataset.number !== undefined) {
-    els.answer.value = `${els.answer.value}${button.dataset.number}`.slice(0, 3);
-  }
-
-  if (button.dataset.action === "clear") {
-    els.answer.value = "";
-  }
-
-  if (button.dataset.action === "enter") {
-    checkAnswer();
-  }
-
-  els.answer.focus();
 });
 
 els.newRound.addEventListener("click", () => {

@@ -8,13 +8,12 @@
   </head>
   <body>
     <main class="app">
-      <section class="hero" aria-labelledby="app-title">
-        <div class="sky" aria-hidden="true">
+      <section class="app-header" aria-labelledby="app-title">
+        <div class="mini-sky" aria-hidden="true">
           <div class="star s1"></div>
           <div class="star s2"></div>
           <div class="star s3"></div>
           <div class="star s4"></div>
-          <div class="moon"></div>
           <div class="rocket">
             <div class="rocket-window"></div>
             <div class="rocket-fin left"></div>
@@ -23,35 +22,29 @@
           </div>
         </div>
 
-        <div class="hero-copy">
+        <div class="header-copy">
           <p class="eyebrow">Entrena cálculo mental</p>
           <h1 id="app-title">Cohete de Números</h1>
-          <p>Misiones cortas de sumas y restas para ganar estrellas, velocidad y confianza.</p>
+          <p>Misiones cortas para ganar rapidez sin perder la sonrisa.</p>
+        </div>
+
+        <div class="scoreboard" aria-label="Marcador">
+          <div>
+            <span id="stars">0</span>
+            <small>estrellas</small>
+          </div>
+          <div>
+            <span id="streak">0</span>
+            <small>racha</small>
+          </div>
+          <div>
+            <span id="round">1/10</span>
+            <small>ronda</small>
+          </div>
         </div>
       </section>
 
-      <section class="panel game-shell" aria-label="Juego de operaciones">
-        <div class="topbar">
-          <div>
-            <p class="label">Misión</p>
-            <h2 id="mode-title">Sumas rápidas</h2>
-          </div>
-          <div class="scoreboard" aria-label="Marcador">
-            <div>
-              <span id="stars">0</span>
-              <small>estrellas</small>
-            </div>
-            <div>
-              <span id="streak">0</span>
-              <small>racha</small>
-            </div>
-            <div>
-              <span id="round">1/10</span>
-              <small>ronda</small>
-            </div>
-          </div>
-        </div>
-
+      <section class="game-shell" aria-label="Juego de operaciones">
         <div class="mode-grid" role="group" aria-label="Elegir tipo de práctica">
           <button class="mode-button active" data-mode="add1">
             <span>+</span>
@@ -79,41 +72,29 @@
           </button>
         </div>
 
-        <div class="play-area">
-          <div class="mission-card" aria-live="polite">
-            <p class="mission-text" id="mission-text">Listo para despegar</p>
-            <div class="problem" id="problem">3 + 4</div>
-            <div class="answer-row">
-              <input id="answer" inputmode="numeric" pattern="[0-9]*" autocomplete="off" aria-label="Respuesta">
-              <button id="check">Comprobar</button>
+        <div class="mission-card" aria-live="polite">
+          <div class="mission-head">
+            <div>
+              <p class="label">Misión</p>
+              <h2 id="mode-title">Sumas rápidas</h2>
             </div>
-            <div class="feedback" id="feedback">Escribe el resultado y pulsa comprobar.</div>
-          </div>
-
-          <div class="side-tools">
             <div class="fuel-meter" aria-label="Barra de combustible">
               <div id="fuel"></div>
             </div>
-            <div class="keypad" aria-label="Teclado numerico">
-              <button data-number="1">1</button>
-              <button data-number="2">2</button>
-              <button data-number="3">3</button>
-              <button data-number="4">4</button>
-              <button data-number="5">5</button>
-              <button data-number="6">6</button>
-              <button data-number="7">7</button>
-              <button data-number="8">8</button>
-              <button data-number="9">9</button>
-              <button data-action="clear">Borrar</button>
-              <button data-number="0">0</button>
-              <button data-action="enter">OK</button>
-            </div>
           </div>
-        </div>
 
-        <div class="controls">
-          <button id="new-round">Nueva misión</button>
-          <button id="practice-list">Ver amigos del 10</button>
+          <p class="mission-text" id="mission-text">Listo para despegar</p>
+          <div class="problem" id="problem">3 + 4</div>
+          <div class="answer-row">
+            <input id="answer" inputmode="numeric" pattern="[0-9]*" autocomplete="off" enterkeyhint="done" aria-label="Respuesta">
+            <button id="check">Comprobar</button>
+          </div>
+          <div class="feedback" id="feedback">Escribe el resultado y pulsa comprobar.</div>
+
+          <div class="controls">
+            <button id="new-round">Nueva misión</button>
+            <button id="practice-list">Ver amigos del 10</button>
+          </div>
         </div>
       </section>
 
