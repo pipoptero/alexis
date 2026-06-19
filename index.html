@@ -45,6 +45,12 @@
       </section>
 
       <section class="game-shell" aria-label="Juego de operaciones">
+        <div class="practice-switch" role="group" aria-label="Elegir forma de responder">
+          <button class="practice-button active" data-answer-mode="choice">Tocar respuesta</button>
+          <button class="practice-button" data-answer-mode="write">Escribir respuesta</button>
+          <button class="practice-button" data-answer-mode="friends">Amigos del 10</button>
+        </div>
+
         <div class="mode-grid" role="group" aria-label="Elegir tipo de práctica">
           <button class="mode-button active" data-mode="add1">
             <span>+</span>
@@ -89,6 +95,7 @@
             <input id="answer" inputmode="numeric" pattern="[0-9]*" autocomplete="off" enterkeyhint="done" aria-label="Respuesta">
             <button id="check">Comprobar</button>
           </div>
+          <div class="choice-grid" id="choices" aria-label="Elegir respuesta"></div>
           <div class="feedback" id="feedback">Escribe el resultado y pulsa comprobar.</div>
 
           <div class="controls">

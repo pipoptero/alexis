@@ -28,12 +28,14 @@ body {
     radial-gradient(circle at 12% 8%, rgba(255, 209, 102, 0.35), transparent 26%),
     linear-gradient(180deg, #f3f8ff 0%, #fff4dc 100%);
   color: var(--ink);
-  font-family: "Trebuchet MS", Arial, sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
+  text-transform: uppercase;
 }
 
 button,
 input {
   font: inherit;
+  text-transform: uppercase;
 }
 
 button {
@@ -51,13 +53,13 @@ button {
 
 .app-header {
   position: relative;
-  min-height: 116px;
+  min-height: 96px;
   overflow: hidden;
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
   gap: 18px;
   align-items: center;
-  padding: 18px 22px;
+  padding: 14px 20px;
   border-radius: 0 0 24px 24px;
   background: var(--night);
   box-shadow: var(--shadow);
@@ -66,6 +68,7 @@ button {
 .header-copy {
   position: relative;
   z-index: 2;
+  min-width: 0;
   color: white;
 }
 
@@ -91,7 +94,7 @@ p {
 
 h1 {
   margin-bottom: 4px;
-  font-size: clamp(2rem, 5vw, 3.35rem);
+  font-size: clamp(1.9rem, 4vw, 2.75rem);
   line-height: 0.96;
 }
 
@@ -192,7 +195,7 @@ h1 {
 }
 
 .scoreboard div {
-  min-height: 70px;
+  min-height: 62px;
   padding: 9px 12px;
   border: 2px solid rgba(255, 255, 255, 0.2);
   border-radius: 18px;
@@ -216,6 +219,33 @@ h1 {
   margin-top: 14px;
 }
 
+.practice-switch {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin-bottom: 12px;
+  padding: 8px;
+  border: 2px solid rgba(221, 229, 241, 0.9);
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.72);
+}
+
+.practice-button {
+  min-height: 52px;
+  padding: 8px 12px;
+  border-radius: 16px;
+  background: #e8edf5;
+  color: var(--ink);
+  font-weight: 900;
+  box-shadow: inset 0 -4px 0 rgba(32, 37, 54, 0.08);
+}
+
+.practice-button.active {
+  background: var(--blue);
+  color: white;
+  box-shadow: 0 6px 0 #245bc0;
+}
+
 .mode-grid {
   display: grid;
   grid-template-columns: repeat(6, minmax(0, 1fr));
@@ -224,8 +254,8 @@ h1 {
 }
 
 .mode-button {
-  min-height: 76px;
-  padding: 9px 8px 10px;
+  min-height: 66px;
+  padding: 7px 8px 8px;
   border: 2px solid transparent;
   border-radius: 18px;
   background: #edf6ff;
@@ -237,12 +267,12 @@ h1 {
 
 .mode-button span {
   display: block;
-  width: 34px;
-  height: 34px;
+  width: 30px;
+  height: 30px;
   margin: 0 auto 6px;
   border-radius: 50%;
   background: var(--sun);
-  line-height: 34px;
+  line-height: 30px;
 }
 
 .mode-button:nth-child(2) span,
@@ -262,8 +292,8 @@ h1 {
 }
 
 .mission-card {
-  min-height: 420px;
-  padding: 22px;
+  min-height: 360px;
+  padding: 18px;
   border: 3px solid #f0d27d;
   border-radius: 22px;
   background:
@@ -281,12 +311,13 @@ h1 {
 
 .mission-head h2 {
   margin-bottom: 0;
-  font-size: 1.6rem;
+  font-size: 1.38rem;
 }
 
 .mission-text {
-  margin: 16px 0 12px;
+  margin: 8px 0;
   color: var(--muted);
+  font-size: 1rem;
   font-weight: 900;
   text-align: center;
 }
@@ -309,14 +340,14 @@ h1 {
 }
 
 .problem {
-  min-height: 152px;
+  min-height: 112px;
   border: 4px solid #eef2f8;
   border-radius: 22px;
   display: grid;
   place-items: center;
   background: white;
   color: var(--ink);
-  font-size: clamp(4.7rem, 9vw, 7.8rem);
+  font-size: clamp(4rem, 8vw, 6.6rem);
   font-weight: 900;
   line-height: 1;
   box-shadow: inset 0 -10px 0 #edf1f7;
@@ -349,7 +380,8 @@ h1 {
 }
 
 #check,
-.controls button {
+.controls button,
+.choice-button {
   min-height: 58px;
   padding: 0 20px;
   border-radius: 18px;
@@ -366,16 +398,49 @@ h1 {
 
 #check:active,
 .controls button:active,
+.choice-button:active,
+.practice-button:active,
 .mode-button:active {
   transform: translateY(3px);
   box-shadow: none;
 }
 
-.feedback {
-  min-height: 34px;
+.choice-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
   margin-top: 14px;
+}
+
+.choice-button {
+  min-height: 72px;
+  border: 4px solid #d9e5f5;
+  background: white;
+  color: var(--ink);
+  font-size: clamp(2.2rem, 6vw, 4.2rem);
+  box-shadow: 0 8px 0 #c9d8ed;
+}
+
+.choice-button:nth-child(2) {
+  border-color: #c6eadc;
+  box-shadow: 0 8px 0 #b2dbc9;
+}
+
+.choice-button:nth-child(3) {
+  border-color: #ffcec7;
+  box-shadow: 0 8px 0 #edb2aa;
+}
+
+.choice-button:nth-child(4) {
+  border-color: #f2dc8f;
+  box-shadow: 0 8px 0 #dec778;
+}
+
+.feedback {
+  min-height: 28px;
+  margin-top: 8px;
   color: var(--muted);
-  font-size: 1.12rem;
+  font-size: 1rem;
   font-weight: 900;
   text-align: center;
 }
@@ -393,7 +458,12 @@ h1 {
   justify-content: center;
   flex-wrap: wrap;
   gap: 12px;
-  margin-top: 16px;
+  margin-top: 10px;
+}
+
+.controls button {
+  min-height: 48px;
+  font-size: 0.95rem;
 }
 
 .controls button:nth-child(2) {
@@ -468,8 +538,12 @@ h1 {
   }
 
   .app-header {
-    min-height: 108px;
-    padding: 16px 18px;
+    min-height: 96px;
+    padding: 14px 18px;
+  }
+
+  .header-copy p:last-child {
+    display: none;
   }
 
   .scoreboard {
@@ -480,8 +554,12 @@ h1 {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
+  .choice-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .mission-card {
-    min-height: 430px;
+    min-height: 390px;
   }
 
   .pairs {
@@ -505,6 +583,10 @@ h1 {
   }
 
   .answer-row {
+    grid-template-columns: 1fr;
+  }
+
+  .practice-switch {
     grid-template-columns: 1fr;
   }
 
